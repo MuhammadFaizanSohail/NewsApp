@@ -9,13 +9,35 @@
     tools:context=".ui.activities.MainActivity">
 
 
+    <EditText
+        android:id="@+id/searchView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:autofillHints=""
+        android:background="@drawable/edit_text_bg"
+        android:hint="Search articles..."
+        android:textCursorDrawable="@null"
+        android:inputType="text"
+        android:layout_marginTop="50dp"
+        android:paddingHorizontal="@dimen/_10sdp"
+        android:paddingVertical="@dimen/_10sdp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/lightTextViewColor"
+        android:textSize="@dimen/_10sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:tabBackground="@color/black"
         app:tabGravity="fill"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         app:tabIndicatorColor="@color/blue"
         app:tabIndicatorGravity="bottom"
         app:tabIndicatorHeight="3dp"
@@ -24,7 +46,7 @@
         app:tabTextColor="@android:color/darker_gray"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/searchView"/>
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewpager"

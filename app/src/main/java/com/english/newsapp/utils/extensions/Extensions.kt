@@ -2,6 +2,7 @@ package com.english.newsapp.utils.extensions
 
 import android.app.Activity
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
@@ -16,4 +17,10 @@ fun Activity.setInsets(view: View) {
     val windowInsetsController = WindowCompat.getInsetsController(window, window.decorView)
     windowInsetsController.isAppearanceLightStatusBars = true
     windowInsetsController.isAppearanceLightNavigationBars = true
+}
+
+fun Activity.hideKeyboard() {
+    val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+    val view = currentFocus ?: View(this)
+    inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
 }

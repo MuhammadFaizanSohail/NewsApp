@@ -3,4 +3,6 @@
     <string name="everything">Everything</string>
     <string name="headlines">Headlines</string>
     <string name="image">image</string>
+    <string name="loading_data">Loading Data...</string>
+    <string name="loading_please_wait">Loading Please Wait...</string>
 </resources>
