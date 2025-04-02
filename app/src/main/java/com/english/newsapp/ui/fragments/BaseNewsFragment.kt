@@ -8,12 +8,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.english.newsapp.R
 import com.english.newsapp.data.model.NewsState
 import com.english.newsapp.databinding.FragmentNewsBinding
 import com.english.newsapp.ui.adapters.NewsAdapter
 import com.english.newsapp.ui.component.dialog.ErrorDialog
 import com.english.newsapp.ui.component.dialog.ProgressDialog
 import com.english.newsapp.ui.viewmodel.NewsViewModel
+import com.english.newsapp.utils.extensions.checkNetwork
 import com.english.newsapp.utils.extensions.createErrorDialog
 import com.english.newsapp.utils.extensions.createProgressDialog
 import dagger.hilt.android.AndroidEntryPoint
@@ -57,7 +59,11 @@ abstract class BaseNewsFragment : Fragment() {
     private fun setupRefreshListener() = with(binding.swipeRefreshLayout) {
         setOnRefreshListener {
             isRefreshing = false
-            fetchNews(true)
+            if (requireContext().checkNetwork()) {
+                fetchNews(true)
+            } else {
+                showError(getString(R.string.no_internet))
+            }
         }
     }
 
