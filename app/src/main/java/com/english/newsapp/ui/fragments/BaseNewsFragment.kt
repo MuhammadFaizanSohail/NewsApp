@@ -1,6 +1,5 @@
 package com.english.newsapp.ui.fragments
 
-import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -12,10 +11,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.english.newsapp.data.model.NewsState
 import com.english.newsapp.databinding.FragmentNewsBinding
 import com.english.newsapp.ui.adapters.NewsAdapter
+import com.english.newsapp.ui.component.dialog.ErrorDialog
 import com.english.newsapp.ui.component.dialog.ProgressDialog
 import com.english.newsapp.ui.viewmodel.NewsViewModel
+import com.english.newsapp.utils.extensions.createErrorDialog
+import com.english.newsapp.utils.extensions.createProgressDialog
 import dagger.hilt.android.AndroidEntryPoint
-import kotlin.getValue
 
 
 @AndroidEntryPoint
@@ -23,6 +24,7 @@ abstract class BaseNewsFragment : Fragment() {
 
     protected val newsViewModel: NewsViewModel by activityViewModels()
     private var progressDialog: ProgressDialog? = null
+    private var errorDialog : ErrorDialog?= null
     protected lateinit var binding: FragmentNewsBinding
     protected val newsAdapter by lazy { NewsAdapter() }
 
@@ -39,6 +41,7 @@ abstract class BaseNewsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         if (isAdded && activity != null) {
             progressDialog = requireContext().createProgressDialog()
+            errorDialog = requireContext().createErrorDialog()
             setupRecyclerView()
             setupObservers()
             setupRefreshListener()
@@ -61,8 +64,10 @@ abstract class BaseNewsFragment : Fragment() {
     protected fun handleState(state: NewsState) {
         when (state) {
             is NewsState.Loading -> progressDialog?.show()
+
             is NewsState.Error -> {
                 progressDialog?.dismiss()
+                showError(state.message)
                 Log.e("NewsError", state.message)
             }
 
@@ -73,10 +78,13 @@ abstract class BaseNewsFragment : Fragment() {
         }
     }
 
+    protected fun showError(message: String) {
+        errorDialog?.apply {
+            setErrorMessage(message)
+            show()
+        }
+    }
+
     abstract fun setupObservers()
     abstract fun fetchNews(isRefreshing: Boolean)
-}
-
-fun Context.createProgressDialog(): ProgressDialog = ProgressDialog(this).apply {
-    setCancelable(false)
 }

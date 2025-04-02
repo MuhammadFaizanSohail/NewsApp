@@ -3,6 +3,9 @@
     <string name="everything">Everything</string>
     <string name="headlines">Headlines</string>
     <string name="image">image</string>
-    <string name="loading_data">Loading Data...</string>
-    <string name="loading_please_wait">Loading Please Wait...</string>
+    <string name="loading_please_wait">Please Wait…</string>
+
+    <string name="oops_we_ran_into_a_proplem">Oops! We ran into a problem!</string>
+    <string name="no_internet">It looks like there\'s no internet connection. Please check your network settings and try again.</string>
+    <string name="okay">Okay</string>
 </resources>

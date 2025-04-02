@@ -1,4 +1,4 @@
-package com.english.newsapp.data.remote.apimodule
+package com.english.newsapp.di.apimodule
 
 import com.english.newsapp.data.remote.api.NewsApiService
 import com.english.newsapp.utils.constants.BASE_URL

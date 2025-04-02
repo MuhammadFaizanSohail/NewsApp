@@ -1,12 +1,15 @@
 package com.english.newsapp.utils.extensions
 
 import android.app.Activity
+import android.content.Context
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
+import com.english.newsapp.ui.component.dialog.ErrorDialog
+import com.english.newsapp.ui.component.dialog.ProgressDialog
 
 fun Activity.setInsets(view: View) {
     ViewCompat.setOnApplyWindowInsetsListener(view) { v, insets ->
@@ -15,7 +18,7 @@ fun Activity.setInsets(view: View) {
         insets
     }
     val windowInsetsController = WindowCompat.getInsetsController(window, window.decorView)
-    windowInsetsController.isAppearanceLightStatusBars = true
+    windowInsetsController.isAppearanceLightStatusBars = false
     windowInsetsController.isAppearanceLightNavigationBars = true
 }
 
@@ -23,4 +26,12 @@ fun Activity.hideKeyboard() {
     val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
     val view = currentFocus ?: View(this)
     inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
+}
+
+fun Context.createProgressDialog(): ProgressDialog = ProgressDialog(this).apply {
+    setCancelable(false)
+}
+
+fun Context.createErrorDialog(): ErrorDialog = ErrorDialog(this).apply {
+    setCancelable(false)
 }

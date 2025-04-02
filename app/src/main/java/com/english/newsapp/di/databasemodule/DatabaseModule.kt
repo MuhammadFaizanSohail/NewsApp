@@ -1,4 +1,4 @@
-package com.english.newsapp.data.local.databasemodule
+package com.english.newsapp.di.databasemodule
 
 import android.content.Context
 import com.english.newsapp.data.local.dao.NewsDao

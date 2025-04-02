@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginHorizontal="@dimen/_10sdp"
+    app:cardBackgroundColor="@color/dialog_bg"
+    app:cardCornerRadius="@dimen/_9sdp"
+    app:cardElevation="0dp"
+    app:strokeWidth="0dp">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:padding="@dimen/_20sdp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:text="@string/oops_we_ran_into_a_proplem"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_13sdp" />
+
+
+        <TextView
+            android:id="@+id/errorMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:gravity="center"
+            android:text="@string/no_internet"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_10sdp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/okayButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:gravity="center"
+            android:text="@string/okay"
+            android:textColor="@color/white"
+            app:cornerRadius="@dimen/_9sdp" />
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>
